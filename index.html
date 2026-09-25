@@ -3,101 +3,180 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kytheris Enterprise — Advanced Neural Systems</title>
+    <title>Kytheris Enterprise — Autonomous Infrastructure & Systems</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-base: #030712;
-            --card-bg: rgba(15, 23, 42, 0.75);
-            --border-subtle: rgba(255, 255, 255, 0.08);
-            --border-glow: rgba(56, 189, 248, 0.4);
-            --accent-cyan: #38bdf8;
-            --accent-emerald: #34d399;
-            --text-primary: #f8fafc;
-            --text-secondary: #94a3b8;
+            --bg-deep: #02040a;
+            --surface-glass: rgba(13, 20, 35, 0.7);
+            --border-glow: rgba(56, 189, 248, 0.25);
+            --border-active: rgba(56, 189, 248, 0.8);
+            --accent-blue: #38bdf8;
+            --accent-emerald: #10b981;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
         }
 
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-family: 'Plus Jakarta Sans', sans-serif;
         }
 
         body {
-            background-color: var(--bg-base);
-            color: var(--text-primary);
+            background-color: var(--bg-deep);
+            color: var(--text-main);
             overflow-x: hidden;
-            perspective: 2000px;
+            perspective: 2500px;
             min-height: 100vh;
         }
 
-        /* 4K Immersive 3D Grid & Lighting */
-        .immersive-grid {
+        /* 3D Moving Holographic Grid Background */
+        .holo-grid {
             position: fixed;
             top: 0;
             left: 0;
             width: 100vw;
             height: 100vh;
             background-image: 
-                radial-gradient(circle at 50% 0%, rgba(56, 189, 248, 0.12) 0%, transparent 60%),
-                linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-                linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
-            background-size: 100% 100%, 60px 60px, 60px 60px;
+                radial-gradient(circle at 50% -20%, rgba(56, 189, 248, 0.18) 0%, transparent 60%),
+                linear-gradient(to right, rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+            background-size: 100% 100%, 50px 50px, 50px 50px;
             z-index: -2;
-            transform: perspective(1000px) rotateX(45deg) scale(2.2);
+            transform: perspective(1000px) rotateX(50deg) scale(2.5);
             transform-origin: top center;
             pointer-events: none;
+            animation: gridPulse 15s ease-in-out infinite alternate;
         }
 
-        .ambient-orb {
+        @keyframes gridPulse {
+            0% { opacity: 0.8; }
+            100% { opacity: 1; transform: perspective(1000px) rotateX(52deg) scale(2.6); }
+        }
+
+        .ambient-glow {
             position: fixed;
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, rgba(56, 189, 248, 0.15) 0%, transparent 70%);
-            top: -100px;
+            width: 700px;
+            height: 700px;
+            background: radial-gradient(circle, rgba(56, 189, 248, 0.12) 0%, transparent 70%);
+            top: -150px;
             left: 50%;
             transform: translateX(-50%);
             z-index: -1;
-            filter: blur(100px);
+            filter: blur(120px);
             pointer-events: none;
         }
 
+        /* Navigation Bar with Logo */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 5%;
+            background: rgba(2, 4, 10, 0.8);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            z-index: 1000;
+        }
+
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .brand-logo {
+            width: 42px;
+            height: 42px;
+            background: linear-gradient(135deg, #0284c7, #38bdf8);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            font-size: 1.4rem;
+            color: #fff;
+            box-shadow: 0 0 20px rgba(56, 189, 248, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .brand-name {
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: #fff;
+            letter-spacing: -0.5px;
+        }
+
+        .nav-status {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            font-family: 'JetBrains Mono', monospace;
+            background: rgba(255, 255, 255, 0.03);
+            padding: 6px 14px;
+            border-radius: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            background-color: var(--accent-emerald);
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--accent-emerald);
+            animation: blink 2s infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.4; }
+        }
+
+        /* Hero Section */
         header {
             position: relative;
-            padding: 10rem 2rem 6rem;
+            padding: 12rem 2rem 6rem;
             text-align: center;
             max-width: 1400px;
             margin: 0 auto;
             transform-style: preserve-3d;
         }
 
-        .logo-badge {
+        .hero-badge {
             display: inline-flex;
             align-items: center;
-            gap: 10px;
-            padding: 8px 18px;
+            gap: 8px;
+            padding: 6px 16px;
             background: rgba(56, 189, 248, 0.08);
-            border: 1px solid rgba(56, 189, 248, 0.3);
-            border-radius: 50px;
+            border: 1px solid var(--border-glow);
+            border-radius: 30px;
             font-size: 0.85rem;
             font-weight: 600;
-            color: var(--accent-cyan);
+            color: var(--accent-blue);
             text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 30px;
-            box-shadow: 0 0 30px rgba(56, 189, 248, 0.2);
+            letter-spacing: 1.5px;
+            margin-bottom: 25px;
+            box-shadow: 0 0 30px rgba(56, 189, 248, 0.15);
             transform: translateZ(50px);
         }
 
         header h1 {
-            font-size: clamp(3rem, 5vw, 5.5rem);
-            font-weight: 900;
+            font-size: clamp(3rem, 5.5vw, 5rem);
+            font-weight: 800;
             letter-spacing: -2px;
             line-height: 1.1;
-            background: linear-gradient(135deg, #ffffff 40%, #94a3b8 100%);
+            background: linear-gradient(135deg, #ffffff 30%, #64748b 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             margin-bottom: 1.5rem;
@@ -105,12 +184,11 @@
         }
 
         header p {
-            font-size: 1.25rem;
-            color: var(--text-secondary);
-            max-width: 800px;
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            max-width: 750px;
             margin: 0 auto;
             line-height: 1.6;
-            font-weight: 400;
             transform: translateZ(30px);
         }
 
@@ -121,26 +199,7 @@
             transform-style: preserve-3d;
         }
 
-        /* Notice banner / System Status */
-        .system-banner {
-            background: var(--card-bg);
-            backdrop-filter: blur(20px);
-            border: 1px solid var(--border-subtle);
-            border-radius: 16px;
-            padding: 1.5rem 2rem;
-            text-align: center;
-            margin-bottom: 5rem;
-            font-size: 0.95rem;
-            color: var(--text-secondary);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
-            transform: translateZ(20px);
-        }
-
-        .system-banner strong {
-            color: var(--text-primary);
-            font-weight: 600;
-        }
-
+        /* Section Titles */
         .section-header {
             text-align: center;
             margin-bottom: 4rem;
@@ -156,11 +215,11 @@
         }
 
         .section-header p {
-            color: var(--text-secondary);
-            font-size: 1.1rem;
+            color: var(--text-muted);
+            font-size: 1.05rem;
         }
 
-        /* 4K Multi-Tier Product Grid */
+        /* 3D Hardcore Product Grid */
         .products-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
@@ -169,15 +228,15 @@
         }
 
         .product-card {
-            background: var(--card-bg);
+            background: var(--surface-glass);
             backdrop-filter: blur(25px);
-            border: 1px solid var(--border-subtle);
+            border: 1px solid rgba(255, 255, 255, 0.08);
             border-radius: 24px;
             padding: 3rem;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.7);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8);
             transform-style: preserve-3d;
             transform: perspective(1000px);
             transition: transform 0.15s ease, border-color 0.3s ease, box-shadow 0.3s ease;
@@ -202,12 +261,12 @@
         }
 
         .product-card:hover {
-            border-color: var(--border-glow);
-            box-shadow: 0 40px 80px rgba(0, 0, 0, 0.9), 0 0 40px rgba(56, 189, 248, 0.15);
+            border-color: var(--border-active);
+            box-shadow: 0 40px 80px rgba(0, 0, 0, 0.9), 0 0 40px rgba(56, 189, 248, 0.2);
         }
 
         .product-card h3 {
-            font-size: 1.8rem;
+            font-size: 1.75rem;
             font-weight: 700;
             color: #fff;
             margin-bottom: 1rem;
@@ -216,8 +275,8 @@
         }
 
         .product-card p {
-            color: var(--text-secondary);
-            font-size: 1.05rem;
+            color: var(--text-muted);
+            font-size: 1.02rem;
             line-height: 1.6;
             margin-bottom: 2rem;
             transform: translateZ(20px);
@@ -230,7 +289,7 @@
         }
 
         .feature-list li {
-            color: var(--text-secondary);
+            color: var(--text-muted);
             font-size: 0.95rem;
             margin-bottom: 0.8rem;
             display: flex;
@@ -251,7 +310,7 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            border-top: 1px solid var(--border-subtle);
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
             padding-top: 2rem;
             transform: translateZ(35px);
         }
@@ -273,23 +332,23 @@
             font-size: 0.95rem;
             box-shadow: 0 10px 25px rgba(2, 132, 199, 0.4);
             transition: all 0.2s ease;
-            border: 1px solid rgba(56, 189, 248, 0.3);
+            border: 1px solid rgba(56, 189, 248, 0.4);
         }
 
         .action-btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 15px 30px rgba(2, 132, 199, 0.6);
+            box-shadow: 0 15px 35px rgba(2, 132, 199, 0.7);
             background: linear-gradient(135deg, #0369a1, #0284c7);
         }
 
-        /* Hardcore Developer Terminal View */
+        /* Terminal Window Showcase */
         .terminal-container {
             background: #010409;
-            border: 1px solid rgba(56, 189, 248, 0.2);
+            border: 1px solid rgba(56, 189, 248, 0.3);
             border-radius: 20px;
             overflow: hidden;
             margin-bottom: 6rem;
-            box-shadow: 0 30px 60px rgba(0,0,0,0.8);
+            box-shadow: 0 35px 70px rgba(0,0,0,0.9);
             transform: translateZ(25px);
         }
 
@@ -298,7 +357,7 @@
             padding: 1rem 1.5rem;
             display: flex;
             align-items: center;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
         }
 
         .terminal-dots {
@@ -319,14 +378,14 @@
             margin-left: 1.5rem;
             font-family: 'JetBrains Mono', monospace;
             font-size: 0.85rem;
-            color: var(--text-secondary);
+            color: var(--text-muted);
         }
 
         .terminal-content {
             padding: 2.5rem;
             font-family: 'JetBrains Mono', monospace;
             font-size: 0.95rem;
-            color: var(--accent-cyan);
+            color: #38bdf8;
             line-height: 1.8;
         }
 
@@ -334,7 +393,7 @@
         .code-str { color: #a5d6ff; }
         .code-fn { color: #d2a8ff; }
 
-        /* Footer Info Grid */
+        /* Footer Grid Box */
         .info-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -343,61 +402,69 @@
         }
 
         .info-box {
-            background: var(--card-bg);
+            background: var(--surface-glass);
             backdrop-filter: blur(20px);
-            border: 1px solid var(--border-subtle);
+            border: 1px solid rgba(255, 255, 255, 0.08);
             border-radius: 20px;
             padding: 3rem;
             box-shadow: 0 25px 50px rgba(0,0,0,0.6);
         }
 
         .info-box h4 {
-            font-size: 1.3rem;
+            font-size: 1.25rem;
             font-weight: 700;
             color: #fff;
             margin-bottom: 1rem;
-            border-bottom: 1px solid var(--border-subtle);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
             padding-bottom: 1rem;
         }
 
         .info-box p {
-            color: var(--text-secondary);
-            font-size: 1rem;
+            color: var(--text-muted);
+            font-size: 0.98rem;
             line-height: 1.6;
         }
 
         footer {
             text-align: center;
             padding: 4rem 2rem;
-            color: var(--text-secondary);
+            color: var(--text-muted);
             font-size: 0.9rem;
-            border-top: 1px solid var(--border-subtle);
-            background: rgba(3, 7, 18, 0.95);
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            background: rgba(2, 4, 10, 0.95);
         }
     </style>
 </head>
 <body>
 
-    <div class="immersive-grid"></div>
-    <div class="ambient-orb"></div>
+    <div class="holo-grid"></div>
+    <div class="ambient-glow"></div>
+
+    <!-- Navigation Bar with Branding Logo -->
+    <nav>
+        <a href="#" class="nav-brand">
+            <div class="brand-logo">K</div>
+            <span class="brand-name">Kytheris Enterprise</span>
+        </a>
+        <div class="nav-status">
+            <div class="status-dot"></div>
+            <span>Nodes Online</span>
+        </div>
+    </nav>
 
     <header>
-        <div class="logo-badge">
-            <span>⚡ Secure Core v4.8</span>
+        <div class="hero-badge">
+            <span>⚡ Enterprise Core v5.2</span>
         </div>
-        <h1>Kytheris Enterprise</h1>
-        <p>Next-generation high-throughput neural pipelines, distributed automation frameworks, and cryptographic developer toolkits built for scale.</p>
+        <h1>Distributed Autonomous Infrastructure</h1>
+        <p>Engineered for maximum concurrency, lightning-fast data harmonization, and uncompromised cryptographic execution across global clusters.</p>
     </header>
 
     <div class="container">
-        
-        <div class="system-banner">
-            Official Cryptographic & Software Infrastructure of <strong>Kytheris Enterprise</strong> — Delivering uncompromised distributed architecture globally.
-        </div>
 
         <div class="section-header">
             <h2>Core Enterprise Toolkits</h2>
-            <p>Production-ready, highly optimized software assets for modern engineering workflows.</p>
+            <p>Production-grade software assets designed for high-performance engineering teams.</p>
         </div>
 
         <div class="products-grid">
@@ -407,9 +474,9 @@
                 <div class="card-spotlight"></div>
                 <div>
                     <h3>AI Business Automation Core</h3>
-                    <p>Production-ready un-obfuscated Python engine engineered for massive concurrent batch execution and lightning-fast data harmonization.</p>
+                    <p>Production-ready un-obfuscated Python engine engineered for massive concurrent batch execution and lightning-fast data synchronization.</p>
                     <ul class="feature-list">
-                        <li>Instant Encrypted Repository Synchronization</li>
+                        <li>Instant Encrypted Repository Sync</li>
                         <li>Full Unobfuscated Source Code Access</li>
                         <li>Automated Patch & Update Distribution</li>
                         <li>Global Commercial Enterprise License</li>
@@ -450,14 +517,14 @@
                     <div class="t-dot t-yellow"></div>
                     <div class="t-dot t-green"></div>
                 </div>
-                <div class="terminal-filename">kytheris_node_initializer.py — Secure Execution Node</div>
+                <div class="terminal-filename">kytheris_core_daemon.py — Secure Execution Node</div>
             </div>
             <div class="terminal-content">
                 <span class="code-kw">import</span> asyncio, json, hashlib<br><br>
-                <span class="code-kw">class</span> <span class="code-fn">KytherisSecurityNode</span>:<br>
+                <span class="code-kw">class</span> <span class="code-fn">KytherisSystemNode</span>:<br>
                 &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-kw">def</span> <span class="code-fn">__init__</span>(<span class="code-kw">self</span>, config_path: <span class="code-kw">str</span>):<br>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-kw">self</span>.node_config = json.load(<span class="code-kw">open</span>(config_path))<br>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-kw">print</span>(<span class="code-str">"[*] Initializing secure neural batch pipeline..."</span>)
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-kw">print</span>(<span class="code-str">"[*] Initializing secure distributed node cluster..."</span>)
             </div>
         </div>
 
@@ -502,7 +569,7 @@
             
             card.addEventListener('mouseleave', () => {
                 spotlight.style.setProperty('--mouse-x', `-1000px`);
-                spotlight.style.setProperty('--mouse-y', `-1000px`);
+                spotlight.style.setProperty('--mouse-y`, `-1000px`);
                 card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
             });
         });
