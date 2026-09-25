@@ -26,7 +26,6 @@
             font-family: 'Plus Jakarta Sans', sans-serif;
         }
 
-        /* 4K Crystal Clear Text Rendering */
         body {
             background-color: var(--bg-deep);
             color: var(--text-main);
@@ -38,7 +37,6 @@
             text-rendering: optimizeLegibility;
         }
 
-        /* 3D Moving Holographic Grid */
         .holo-grid {
             position: fixed;
             top: 0;
@@ -69,7 +67,6 @@
             pointer-events: none;
         }
 
-        /* Navigation Bar */
         nav {
             position: fixed;
             top: 0;
@@ -147,7 +144,6 @@
             50% { opacity: 0.4; }
         }
 
-        /* Hero Section */
         header {
             position: relative;
             padding: 12rem 2rem 5rem;
@@ -205,7 +201,6 @@
             transform-style: preserve-3d;
         }
 
-        /* Real-Time Telemetry Matrix */
         .telemetry-matrix {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -248,7 +243,6 @@
             font-weight: 600;
         }
 
-        /* Section Titles */
         .section-header {
             text-align: center;
             margin-bottom: 4rem;
@@ -268,7 +262,6 @@
             font-size: 1.05rem;
         }
 
-        /* 3D Hardcore Product Grid */
         .products-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
@@ -391,7 +384,6 @@
             background: linear-gradient(135deg, #0369a1, #0284c7);
         }
 
-        /* Terminal Window Showcase */
         .terminal-container {
             background: #000205;
             border: 1px solid rgba(56, 189, 248, 0.4);
@@ -443,7 +435,6 @@
         .code-str { color: #a5d6ff; }
         .code-fn { color: #d2a8ff; }
 
-        /* Enterprise Details Grid */
         .info-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -478,6 +469,14 @@
             line-height: 1.6;
         }
 
+        .contact-admin {
+            text-align: center;
+            margin-top: 1rem;
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--accent-blue);
+            font-weight: 700;
+        }
+
         footer {
             text-align: center;
             padding: 4rem 2rem;
@@ -493,7 +492,6 @@
     <div class="holo-grid"></div>
     <div class="ambient-glow"></div>
 
-    <!-- Navigation Bar -->
     <nav>
         <a href="#" class="nav-brand">
             <div class="brand-logo">K</div>
@@ -520,7 +518,6 @@
 
     <div class="container">
 
-        <!-- Real-Time Telemetry Matrix -->
         <div class="telemetry-matrix">
             <div class="telemetry-card">
                 <span class="t-label">Active Shard Clusters</span>
@@ -551,7 +548,6 @@
 
         <div class="products-grid">
             
-            <!-- Product 1 -->
             <div class="product-card">
                 <div class="card-spotlight"></div>
                 <div>
@@ -570,7 +566,6 @@
                 </div>
             </div>
 
-            <!-- Product 2 -->
             <div class="product-card">
                 <div class="card-spotlight"></div>
                 <div>
@@ -591,7 +586,6 @@
 
         </div>
 
-        <!-- Terminal Showcase -->
         <div class="terminal-container">
             <div class="terminal-bar">
                 <div class="terminal-dots">
@@ -604,22 +598,23 @@
             <div class="terminal-content">
                 <span class="code-kw">import</span> asyncio, json, hashlib, socket<br><br>
                 <span class="code-kw">class</span> <span class="code-fn">KytherisClusterNode</span>:<br>
-                &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-kw">def</span> <span class="code-fn">__init__</span>(<span class="code-kw">self</span>, config_path: <span class="code-kw">str</span>):<br>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-kw">self</span>.node_config = json.load(<span class="code-kw">open</span>(config_path))<br>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-kw">print</span>(<span class="code-str">"[*] Initializing secure neural batch pipeline & ledger sync..."</span>)<br>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-kw">print</span>(<span class="code-str">"[+] Cryptographic handshake established on port 8443."</span>)
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-kw">def</span> <span class="code-fn">__init__</span>(<span class="code-keyword">self</span>, config_path: <span class="code-keyword">str</span>):<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-keyword">self</span>.node_config = json.load(<span class="code-keyword">open</span>(config_path))<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-keyword">print</span>(<span class="code-str">"[*] Initializing secure neural batch pipeline & ledger sync..."</span>)<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-keyword">print</span>(<span class="code-str">"[+] Cryptographic handshake established on port 8443."</span>)
             </div>
         </div>
 
-        <!-- Enterprise Details Grid -->
         <div class="info-grid">
             <div class="info-box">
                 <h4>🛡️ Automated Fulfillment Protocol</h4>
                 <p>Upon verification of transaction clearance, our decentralized delivery nodes immediately provision repository permissions, cryptographic access tokens, and comprehensive technical documentation to your primary administrative address.</p>
+                <div class="contact-admin">Admin Contact: jrentiress@gmail.com</div>
             </div>
             <div class="info-box">
                 <h4>⚡ Licensing & Zero-Trust Compliance</h4>
-                <p>All toolkits include perpetual commercial deployment rights backed by SOC2 Type II compliance standards. System audits, developer verification, and technical support claims are fully honored within 14 calendar days of acquisition.</p>
+                <p>All toolkits include perpetual commercial deployment rights backed by compliance standards. System audits, developer verification, and technical support claims are fully honored within 14 calendar days of acquisition.</p>
+                <div class="contact-admin">Support: jrentiress@gmail.com</div>
             </div>
         </div>
 
@@ -629,7 +624,6 @@
         <p>&copy; 2026 Kytheris Enterprise. All rights reserved. Secure Autonomous Infrastructure & Developer Toolkits.</p>
     </footer>
 
-    <!-- Interactive 3D Card Hover & Tilt Engine -->
     <script>
         document.querySelectorAll('.product-card').forEach(card => {
             const spotlight = card.querySelector('.card-spotlight');
