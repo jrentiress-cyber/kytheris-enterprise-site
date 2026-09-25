@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kytheris Enterprise - AI Workflows & Python Toolkits</title>
+    <title>Kytheris Enterprise - Advanced AI Workflows & Python Toolkits</title>
     <style>
         :root {
-            --bg-color: #030712;
-            --card-bg: rgba(15, 23, 42, 0.75);
-            --border-color: rgba(255, 255, 255, 0.08);
-            --accent-glow: rgba(59, 130, 246, 0.5);
-            --success-glow: rgba(16, 185, 129, 0.4);
+            --bg-color: #020617;
+            --card-bg: rgba(15, 23, 42, 0.85);
+            --border-color: rgba(56, 189, 248, 0.2);
+            --accent-glow: #38bdf8;
+            --success-color: #34d399;
             --text-main: #f8fafc;
             --text-muted: #94a3b8;
         }
@@ -22,279 +22,306 @@
         }
 
         body {
-            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            font-family: 'JetBrains Mono', monospace, sans-serif;
             background-color: var(--bg-color);
             color: var(--text-main);
             overflow-x: hidden;
-            perspective: 1500px;
+            perspective: 1800px;
             min-height: 100vh;
         }
 
-        /* Animated Background 3D Orbs */
-        .bg-glow {
+        /* Cyberpunk Grid Background Effect */
+        .cyber-grid {
             position: fixed;
-            width: 500px;
-            height: 500px;
-            background: radial-gradient(circle, rgba(59, 130, 246, 0.15) 0%, transparent 70%);
-            top: -100px;
-            left: -100px;
-            z-index: -1;
-            filter: blur(80px);
-            animation: floatOrb 10s ease-in-out infinite alternate;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-image: 
+                linear-gradient(to right, rgba(56, 189, 248, 0.05) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(56, 189, 248, 0.05) 1px, transparent 1px);
+            background-size: 40px 40px;
+            z-index: -2;
+            transform: perspective(500px) rotateX(60deg) scale(2);
+            transform-origin: top center;
+            animation: gridMove 20s linear infinite;
         }
 
-        .bg-glow-2 {
-            position: fixed;
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, rgba(16, 185, 129, 0.1) 0%, transparent 70%);
-            bottom: -150px;
-            right: -150px;
-            z-index: -1;
-            filter: blur(100px);
-            animation: floatOrb 14s ease-in-out infinite alternate-reverse;
+        @keyframes gridMove {
+            0% { background-position: 0 0; }
+            100% { background-position: 0 80px; }
         }
 
-        @keyframes floatOrb {
-            0% { transform: translate(0, 0) scale(1); }
-            100% { transform: translate(50px, 80px) scale(1.1); }
+        .ambient-glow {
+            position: fixed;
+            width: 450px;
+            height: 450px;
+            background: radial-gradient(circle, rgba(56, 189, 248, 0.2) 0%, transparent 70%);
+            top: 10%;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: -1;
+            filter: blur(120px);
         }
 
         header {
             position: relative;
-            padding: 7rem 2rem 5rem;
+            padding: 8rem 2rem 5rem;
             text-align: center;
-            background: linear-gradient(to bottom, rgba(15, 23, 42, 0.8), transparent);
             border-bottom: 1px solid var(--border-color);
             transform-style: preserve-3d;
+            background: linear-gradient(to bottom, rgba(2, 6, 23, 0.9), transparent);
         }
 
         .logo-container {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            width: 100px;
-            height: 100px;
-            background: linear-gradient(135deg, rgba(59, 130, 246, 0.25), rgba(16, 185, 129, 0.25));
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 28px;
+            width: 110px;
+            height: 110px;
+            background: linear-gradient(135deg, rgba(56, 189, 248, 0.2), rgba(52, 211, 153, 0.2));
+            border: 2px solid var(--accent-glow);
+            border-radius: 30px;
             margin-bottom: 25px;
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.7), 0 0 30px var(--accent-glow);
-            transform: translateZ(50px);
-            animation: pulseLogo 4s ease-in-out infinite alternate;
+            box-shadow: 0 0 40px rgba(56, 189, 248, 0.4), inset 0 0 20px rgba(56, 189, 248, 0.2);
+            transform: translateZ(60px);
+            animation: pulseShield 3s ease-in-out infinite alternate;
         }
 
-        @keyframes pulseLogo {
-            0% { box-shadow: 0 25px 50px rgba(0, 0, 0, 0.7), 0 0 20px rgba(59, 130, 246, 0.3); }
-            100% { box-shadow: 0 30px 60px rgba(0, 0, 0, 0.9), 0 0 45px rgba(59, 130, 246, 0.7); }
+        @keyframes pulseShield {
+            0% { transform: translateZ(60px) scale(1); box-shadow: 0 0 30px rgba(56, 189, 248, 0.3); }
+            100% { transform: translateZ(80px) scale(1.05); box-shadow: 0 0 60px rgba(56, 189, 248, 0.7); }
         }
 
         .logo-text {
-            font-size: 3rem;
+            font-size: 3.5rem;
             font-weight: 900;
-            background: linear-gradient(135deg, #60a5fa, #38bdf8, #34d399);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            color: #38bdf8;
+            text-shadow: 0 0 20px rgba(56, 189, 248, 0.8);
         }
 
         header h1 {
-            font-size: 3.5rem;
-            font-weight: 800;
-            letter-spacing: -1px;
-            background: linear-gradient(to right, #f8fafc, #94a3b8);
+            font-size: 4rem;
+            font-weight: 900;
+            letter-spacing: -1.5px;
+            background: linear-gradient(135deg, #fff 30%, #38bdf8 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             margin-bottom: 1rem;
-            transform: translateZ(30px);
+            transform: translateZ(40px);
         }
 
         header p {
-            font-size: 1.25rem;
+            font-size: 1.2rem;
             color: var(--text-muted);
-            max-width: 700px;
+            max-width: 750px;
             margin: 0 auto;
             transform: translateZ(20px);
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 1300px;
             margin: 0 auto;
-            padding: 5rem 2rem;
+            padding: 6rem 2rem;
             transform-style: preserve-3d;
         }
 
         .section-title {
-            font-size: 2.5rem;
+            font-size: 2.8rem;
             text-align: center;
-            font-weight: 800;
-            margin-bottom: 3rem;
-            letter-spacing: -0.5px;
-            background: linear-gradient(to right, #fff, #94a3b8);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            font-weight: 900;
+            margin-bottom: 3.5rem;
+            letter-spacing: -1px;
+            color: #fff;
+            text-shadow: 0 0 30px rgba(255, 255, 255, 0.2);
         }
 
-        /* 3D Interactive Card Grid */
+        /* Advanced 3D Interactive Cards with Spotlight & Neon Border */
         .products-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 3rem;
-            margin-bottom: 5rem;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 3.5rem;
+            margin-bottom: 6rem;
         }
 
         .product-card {
             background: var(--card-bg);
-            backdrop-filter: blur(20px);
             border: 1px solid var(--border-color);
             border-radius: 24px;
-            padding: 3rem 2.5rem;
+            padding: 3.5rem 3rem;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
+            box-shadow: 0 40px 80px rgba(0, 0, 0, 0.8);
             transform-style: preserve-3d;
             transform: perspective(1000px);
             transition: transform 0.1s ease, border-color 0.3s ease, box-shadow 0.3s ease;
             position: relative;
+            overflow: hidden;
+        }
+
+        /* Spotlight tracking element inside card */
+        .card-spotlight {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(800px circle at var(--mouse-x) var(--mouse-y), rgba(56, 189, 248, 0.15), transparent 40%);
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .product-card > * {
+            position: relative;
+            z-index: 2;
         }
 
         .product-card:hover {
-            border-color: rgba(59, 130, 246, 0.5);
-            box-shadow: 0 40px 80px rgba(0, 0, 0, 0.8), 0 0 40px rgba(59, 130, 246, 0.2);
+            border-color: rgba(56, 189, 248, 0.8);
+            box-shadow: 0 50px 100px rgba(0, 0, 0, 0.9), 0 0 50px rgba(56, 189, 248, 0.3);
         }
 
         .product-card h3 {
-            font-size: 1.75rem;
+            font-size: 2rem;
             margin-bottom: 1rem;
             color: #fff;
-            transform: translateZ(20px);
+            transform: translateZ(30px);
         }
 
         .product-card p {
             color: var(--text-muted);
-            font-size: 1rem;
+            font-size: 1.05rem;
             margin-bottom: 2rem;
-            transform: translateZ(15px);
+            transform: translateZ(20px);
         }
 
         .features-list {
             list-style: none;
             margin-bottom: 2.5rem;
-            transform: translateZ(15px);
+            transform: translateZ(20px);
         }
 
         .features-list li {
             color: var(--text-muted);
-            margin-bottom: 0.75rem;
+            margin-bottom: 0.8rem;
             position: relative;
-            padding-left: 24px;
-            font-size: 0.95rem;
+            padding-left: 26px;
+            font-size: 0.98rem;
         }
 
         .features-list li::before {
-            content: "✓";
+            content: "⚡";
             position: absolute;
             left: 0;
             color: #34d399;
-            font-weight: bold;
         }
 
         .price-row {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            transform: translateZ(25px);
+            transform: translateZ(35px);
             border-top: 1px solid var(--border-color);
-            padding-top: 1.5rem;
+            padding-top: 2rem;
         }
 
         .price {
-            font-size: 2.25rem;
-            font-weight: 800;
+            font-size: 2.5rem;
+            font-weight: 900;
             color: #34d399;
-            text-shadow: 0 0 20px rgba(52, 211, 153, 0.3);
+            text-shadow: 0 0 25px rgba(52, 211, 153, 0.4);
         }
 
         .btn {
-            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+            background: linear-gradient(135deg, #0284c7, #0369a1);
             color: white;
-            padding: 0.9rem 2rem;
+            padding: 1rem 2.2rem;
             border-radius: 12px;
             text-decoration: none;
-            font-weight: 600;
-            box-shadow: 0 10px 25px rgba(59, 130, 246, 0.4);
+            font-weight: 700;
+            box-shadow: 0 10px 30px rgba(2, 132, 199, 0.5);
             transition: all 0.3s ease;
             display: inline-block;
+            border: 1px solid rgba(56, 189, 248, 0.4);
         }
 
         .btn:hover {
-            transform: translateY(-3px) scale(1.05);
-            box-shadow: 0 15px 35px rgba(59, 130, 246, 0.7);
+            transform: translateY(-4px) scale(1.06);
+            box-shadow: 0 20px 40px rgba(2, 132, 199, 0.8);
+            background: linear-gradient(135deg, #0369a1, #0284c7);
         }
 
-        /* Workflow 3D Container */
-        .workflow-container {
-            background: var(--card-bg);
-            backdrop-filter: blur(20px);
-            border: 1px solid var(--border-color);
-            border-radius: 24px;
-            padding: 4rem 3rem;
-            margin-bottom: 5rem;
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
-            transform: translateZ(20px);
-        }
-
-        .workflow-steps {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2.5rem;
-            margin-top: 3rem;
-        }
-
-        .step-card {
-            background: rgba(3, 7, 18, 0.6);
-            border: 1px solid var(--border-color);
+        /* Terminal / Code Preview Section */
+        .terminal-box {
+            background: #010409;
+            border: 1px solid rgba(56, 189, 248, 0.3);
             border-radius: 16px;
-            padding: 2.5rem 2rem;
-            transform-style: preserve-3d;
-            transition: transform 0.3s ease, border-color 0.3s ease;
+            overflow: hidden;
+            margin-bottom: 6rem;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.8);
+            transform: translateZ(25px);
         }
 
-        .step-card:hover {
-            transform: translateY(-8px) translateZ(15px);
-            border-color: rgba(59, 130, 246, 0.4);
+        .terminal-header {
+            background: #0d1117;
+            padding: 1rem 1.5rem;
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid rgba(56, 189, 248, 0.2);
         }
 
-        .step-card h4 {
-            color: #60a5fa;
-            font-size: 1.25rem;
-            margin-bottom: 1rem;
+        .terminal-dots {
+            display: flex;
+            gap: 8px;
         }
 
-        .step-card p {
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .dot-red { background: #ff5f56; }
+        .dot-yellow { background: #ffbd2e; }
+        .dot-green { background: #27c93f; }
+
+        .terminal-title {
+            margin-left: 1.5rem;
+            font-size: 0.9rem;
             color: var(--text-muted);
-            font-size: 0.95rem;
         }
 
-        /* Compliance & Info */
+        .terminal-body {
+            padding: 2rem;
+            font-size: 0.95rem;
+            color: #38bdf8;
+            line-height: 1.7;
+        }
+
+        .code-keyword { color: #ff7b72; }
+        .code-string { color: #a5d6ff; }
+        .code-func { color: #d2a8ff; }
+
+        /* Workflow & Info Grid */
         .info-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 3rem;
-            margin-bottom: 5rem;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3.5rem;
+            margin-bottom: 6rem;
         }
 
         .info-card {
             background: var(--card-bg);
             border: 1px solid var(--border-color);
             border-radius: 20px;
-            padding: 3rem 2.5rem;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+            padding: 3.5rem 3rem;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.7);
         }
 
         .info-card h3 {
-            font-size: 1.4rem;
-            margin-bottom: 1rem;
+            font-size: 1.6rem;
+            margin-bottom: 1.2rem;
             color: #fff;
             border-bottom: 1px solid var(--border-color);
             padding-bottom: 1rem;
@@ -302,163 +329,170 @@
 
         .info-card p {
             color: var(--text-muted);
-            font-size: 1rem;
+            font-size: 1.05rem;
         }
 
         .contact-section {
-            background: linear-gradient(135deg, rgba(15, 23, 42, 0.9), rgba(30, 41, 59, 0.9));
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.95), rgba(2, 6, 23, 0.95));
             border: 1px solid var(--border-color);
             border-radius: 24px;
-            padding: 4rem;
+            padding: 5rem 3rem;
             text-align: center;
-            box-shadow: 0 30px 60px rgba(0,0,0,0.7);
+            box-shadow: 0 40px 80px rgba(0,0,0,0.9);
         }
 
         .contact-section h2 {
-            font-size: 2.2rem;
-            margin-bottom: 1rem;
+            font-size: 2.5rem;
+            margin-bottom: 1.2rem;
+            color: #fff;
         }
 
         .contact-section p {
             color: var(--text-muted);
-            font-size: 1.1rem;
-            margin-bottom: 0.5rem;
+            font-size: 1.15rem;
         }
 
         footer {
             text-align: center;
-            padding: 3.5rem;
+            padding: 4rem;
             color: var(--text-muted);
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             border-top: 1px solid var(--border-color);
-            background: rgba(3, 7, 18, 0.95);
-            margin-top: 5rem;
+            background: rgba(2, 6, 23, 0.98);
+            margin-top: 6rem;
         }
     </style>
 </head>
 <body>
 
-    <div class="bg-glow"></div>
-    <div class="bg-glow-2"></div>
+    <div class="cyber-grid"></div>
+    <div class="ambient-glow"></div>
 
     <header>
         <div class="logo-container">
             <span class="logo-text">K</span>
         </div>
         <h1>Kytheris Enterprise</h1>
-        <p>Next-Generation AI Workflows, Autonomous Batch Processing Engines & Advanced Python Toolkits</p>
+        <p>Advanced Autonomous Neural Pipelines, High-Throughput Batch Engines & Quantum-Grade Python Toolkits</p>
     </header>
 
     <div class="container">
         <!-- Compliance Box -->
-        <div class="info-card" style="margin-bottom: 4rem; text-align: center; background: rgba(59, 130, 246, 0.05); border-color: rgba(59, 130, 246, 0.2);">
-            <p>Official Digital Infrastructure of <strong>Kytheris Enterprise</strong> — Providing secure, high-performance developer software toolkits globally.</p>
+        <div class="info-card" style="margin-bottom: 5rem; text-align: center; background: rgba(56, 189, 248, 0.03);">
+            <p>Official Cryptographic & Software Infrastructure of <strong>Kytheris Enterprise</strong> — Delivering uncompromised distributed architecture globally.</p>
         </div>
 
-        <h2 class="section-title">Professional Software Solutions</h2>
+        <h2 class="section-title">Core Enterprise Toolkits</h2>
         <div class="products-grid">
             
             <!-- Product 1 -->
-            <div class="product-card" id="card-1">
+            <div class="product-card">
+                <div class="card-spotlight"></div>
                 <div>
-                    <h3>AI Business Automation Toolkit</h3>
-                    <p>Complete production-ready source code and modular Python scripts designed for large-scale batch processing and pipeline execution.</p>
+                    <h3>AI Business Automation Core</h3>
+                    <p>Production-ready un-obfuscated Python engine engineered for massive concurrent batch execution and data harmonization.</p>
                     <ul class="features-list">
-                        <li>Instant Digital Repository Access</li>
-                        <li>Full Unobfuscated Python Source</li>
-                        <li>Lifetime Upgrades & Patches</li>
-                        <li>Commercial Enterprise Rights</li>
+                        <li>Instant Encrypted Repository Sync</li>
+                        <li>Full Unobfuscated Source Code</li>
+                        <li>Automated Patch Distribution</li>
+                        <li>Global Commercial Enterprise License</li>
                     </ul>
                 </div>
                 <div class="price-row">
                     <div class="price">$29.00</div>
-                    <a href="#" class="btn">Acquire License</a>
+                    <a href="#" class="btn">Deploy License</a>
                 </div>
             </div>
 
             <!-- Product 2 -->
-            <div class="product-card" id="card-2">
+            <div class="product-card">
+                <div class="card-spotlight"></div>
                 <div>
-                    <h3>Enterprise Engine & Invoicing Suite</h3>
-                    <p>Advanced multi-tier pipeline framework featuring real-time transaction telemetry, ledger synchronization, and automated invoicing.</p>
+                    <h3>Enterprise Ledger & Telemetry Suite</h3>
+                    <p>Multi-threaded transaction pipeline featuring real-time state tracking, ledger synchronization, and automated invoicing modules.</p>
                     <ul class="features-list">
-                        <li>High-Throughput Pipeline Engine</li>
-                        <li>Automated Invoicing Modules</li>
+                        <li>Ultra-Low Latency Pipeline Engine</li>
+                        <li>Automated Ledger Synchronization</li>
                         <li>Dedicated Architecture Support</li>
-                        <li>Advanced Integration Guides</li>
+                        <li>Advanced Cryptographic Documentation</li>
                     </ul>
                 </div>
                 <div class="price-row">
                     <div class="price">$49.00</div>
-                    <a href="#" class="btn">Acquire License</a>
+                    <a href="#" class="btn">Deploy License</a>
                 </div>
             </div>
 
         </div>
 
-        <!-- Workflow Section -->
-        <div class="workflow-container">
-            <h2 class="section-title" style="margin-bottom: 1rem;">Core Execution Architecture</h2>
-            <p style="text-align: center; color: var(--text-muted); max-width: 700px; margin: 0 auto;">Our software suites follow strict modular lifecycles to ensure stability and high performance in production environments.</p>
-            
-            <div class="workflow-steps">
-                <div class="step-card">
-                    <h4>1. Environment Ingestion</h4>
-                    <p>Python modular scripts parse system architecture, validate dependency mapping, and configure secure runtime parameters.</p>
+        <!-- Terminal Code Preview Showcase -->
+        <div class="terminal-box">
+            <div class="terminal-header">
+                <div class="terminal-dots">
+                    <div class="dot dot-red"></div>
+                    <div class="dot dot-yellow"></div>
+                    <div class="dot dot-green"></div>
                 </div>
-                <div class="step-card">
-                    <h4>2. Autonomous Processing</h4>
-                    <p>Multi-threaded processing blocks handle asynchronous batch execution, error trapping, and state persistence.</p>
-                </div>
-                <div class="step-card">
-                    <h4>3. Secure Deployment</h4>
-                    <p>Finalized telemetry logs and compiled assets are routed directly to designated enterprise endpoints with zero latency.</p>
-                </div>
+                <div class="terminal-title">kytheris_engine_v4.py — Secure Execution Node</div>
             </div>
+            <div class="terminal-body">
+                <span class="code-keyword">import</span> asyncio, json, hashlib<br><br>
+                <span class="code-keyword">class</span> <span class="code-func">KytherisNodeInitializer</span>:<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-keyword">def</span> <span class="code-func">__init__</span>(<span class="code-keyword">self</span>, config_path: <span class="code-keyword">str</span>):<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-keyword">self</span>.payload = json.load(<span class="code-keyword">open</span>(config_path))<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-keyword">print</span>(<span class="code-string">"[*] Initializing secure neural batch pipeline..."</span>)</div>
         </div>
 
         <!-- Policies Grid -->
         <div class="info-grid">
             <div class="info-card">
-                <h3>Global Delivery Protocols</h3>
-                <p>Upon verified order clearance, our system automatically triggers secure repository provisioning, documentation delivery, and license key generation straight to your registered email.</p>
+                <h3>Automated Fulfillment Protocol</h3>
+                <p>Upon verification of transaction clearance, our decentralized delivery nodes immediately provision repository permissions, cryptographic tokens, and comprehensive documentation to your primary address.</p>
             </div>
             <div class="info-card">
-                <h3>Licensing & Terms</h3>
-                <p>All toolkits are backed by standard commercial development licenses. Technical support and review claims are accommodated within 14 days of acquisition.</p>
+                <h3>Licensing & Verification Terms</h3>
+                <p>All toolkits include perpetual commercial rights. System audits, developer verification, and technical support claims are fully honored within 14 calendar days of asset acquisition.</p>
             </div>
         </div>
 
         <!-- Contact Section -->
         <div class="contact-section">
-            <h2>Administrative & Technical Support</h2>
-            <p>For verified license activations, enterprise documentation, or developer inquiries, connect with our core team:</p>
-            <p style="color: #60a5fa; font-weight: 600; margin-top: 1rem;">support@kytherisenterprise.com</p>
+            <h2>Developer & Enterprise Support</h2>
+            <p>For verified API handshakes, architecture documentation, or security audits, contact our core engineering group:</p>
+            <p style="color: #38bdf8; font-weight: 700; margin-top: 1.2rem; font-size: 1.25rem;">support@kytherisenterprise.com</p>
         </div>
     </div>
 
     <footer>
-        <p>&copy; 2026 Kytheris Enterprise. All rights reserved. Professional Software Toolkits & Autonomous Infrastructure.</p>
+        <p>&copy; 2026 Kytheris Enterprise. All rights reserved. Secure Autonomous Infrastructure & Developer Toolkits.</p>
     </footer>
 
-    <!-- Interactive 3D Card Tilt Script -->
+    <!-- Advanced Interactive 3D Spotlight & Tilt Engine -->
     <script>
         document.querySelectorAll('.product-card').forEach(card => {
+            const spotlight = card.querySelector('.card-spotlight');
+
             card.addEventListener('mousemove', (e) => {
                 const rect = card.getBoundingClientRect();
                 const x = e.clientX - rect.left;
                 const y = e.clientY - rect.top;
                 
+                // Spotlight coordinate update
+                spotlight.style.setProperty('--mouse-x', `${x}px`);
+                spotlight.style.setProperty('--mouse-y', `${y}px`);
+                
+                // 3D Tilt calculation
                 const centerX = rect.width / 2;
                 const centerY = rect.height / 2;
+                const rotateX = ((y - centerY) / centerY) * -15;
+                const rotateY = ((x - centerX) / centerX) * 15;
                 
-                const rotateX = ((y - centerY) / centerY) * -12;
-                const rotateY = ((x - centerX) / centerX) * 12;
-                
-                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.03, 1.03, 1.03)`;
             });
             
             card.addEventListener('mouseleave', () => {
+                spotlight.style.setProperty('--mouse-x', `-1000px`);
+                spotlight.style.setProperty('--mouse-y', `-1000px`);
                 card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
             });
         });
