@@ -6,384 +6,462 @@
     <title>Kytheris Enterprise - AI Workflows & Python Toolkits</title>
     <style>
         :root {
-            --bg-color: #0b0f19;
-            --card-bg: rgba(17, 24, 39, 0.85);
-            --border-color: rgba(255, 255, 255, 0.12);
-            --accent-color: #3b82f6;
-            --accent-hover: #2563eb;
-            --text-main: #f3f4f6;
-            --text-muted: #9ca3af;
-            --success-color: #10b981;
+            --bg-color: #030712;
+            --card-bg: rgba(15, 23, 42, 0.75);
+            --border-color: rgba(255, 255, 255, 0.08);
+            --accent-glow: rgba(59, 130, 246, 0.5);
+            --success-glow: rgba(16, 185, 129, 0.4);
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
         }
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+        * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
             background-color: var(--bg-color);
             color: var(--text-main);
-            line-height: 1.6;
             overflow-x: hidden;
-            perspective: 1200px;
-            background-image: 
-                radial-gradient(circle at 10% 20%, rgba(59, 130, 246, 0.15) 0%, transparent 40%),
-                radial-gradient(circle at 90% 80%, rgba(16, 185, 129, 0.12) 0%, transparent 40%);
+            perspective: 1500px;
+            min-height: 100vh;
         }
+
+        /* Animated Background 3D Orbs */
+        .bg-glow {
+            position: fixed;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.15) 0%, transparent 70%);
+            top: -100px;
+            left: -100px;
+            z-index: -1;
+            filter: blur(80px);
+            animation: floatOrb 10s ease-in-out infinite alternate;
+        }
+
+        .bg-glow-2 {
+            position: fixed;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(16, 185, 129, 0.1) 0%, transparent 70%);
+            bottom: -150px;
+            right: -150px;
+            z-index: -1;
+            filter: blur(100px);
+            animation: floatOrb 14s ease-in-out infinite alternate-reverse;
+        }
+
+        @keyframes floatOrb {
+            0% { transform: translate(0, 0) scale(1); }
+            100% { transform: translate(50px, 80px) scale(1.1); }
+        }
+
         header {
-            background: linear-gradient(135deg, rgba(30, 27, 75, 0.95) 0%, rgba(15, 23, 42, 0.95) 100%);
-            padding: 5rem 1rem;
-            text-align: center;
-            border-bottom: 1px solid var(--border-color);
             position: relative;
-            backdrop-filter: blur(16px);
+            padding: 7rem 2rem 5rem;
+            text-align: center;
+            background: linear-gradient(to bottom, rgba(15, 23, 42, 0.8), transparent);
+            border-bottom: 1px solid var(--border-color);
             transform-style: preserve-3d;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
         }
+
         .logo-container {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            width: 95px;
-            height: 95px;
-            background: linear-gradient(135deg, rgba(59, 130, 246, 0.3), rgba(16, 185, 129, 0.3));
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            border-radius: 24px;
-            margin-bottom: 20px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), 0 0 30px rgba(59, 130, 246, 0.4);
-            transform: translateZ(30px);
-            transition: transform 0.4s ease;
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.25), rgba(16, 185, 129, 0.25));
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 28px;
+            margin-bottom: 25px;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.7), 0 0 30px var(--accent-glow);
+            transform: translateZ(50px);
+            animation: pulseLogo 4s ease-in-out infinite alternate;
         }
-        .logo-container:hover {
-            transform: translateZ(50px) scale(1.1) rotate(5deg);
+
+        @keyframes pulseLogo {
+            0% { box-shadow: 0 25px 50px rgba(0, 0, 0, 0.7), 0 0 20px rgba(59, 130, 246, 0.3); }
+            100% { box-shadow: 0 30px 60px rgba(0, 0, 0, 0.9), 0 0 45px rgba(59, 130, 246, 0.7); }
         }
+
         .logo-text {
-            font-size: 2.8rem;
+            font-size: 3rem;
             font-weight: 900;
-            background: linear-gradient(to right, #60a5fa, #38bdf8, #34d399);
+            background: linear-gradient(135deg, #60a5fa, #38bdf8, #34d399);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
+
         header h1 {
-            margin: 0;
-            font-size: 3.2rem;
+            font-size: 3.5rem;
             font-weight: 800;
-            background: linear-gradient(to right, #60a5fa, #38bdf8, #818cf8);
+            letter-spacing: -1px;
+            background: linear-gradient(to right, #f8fafc, #94a3b8);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            text-shadow: 0 15px 35px rgba(59, 130, 246, 0.4);
-            transform: translateZ(20px);
+            margin-bottom: 1rem;
+            transform: translateZ(30px);
         }
+
         header p {
-            margin-top: 1rem;
             font-size: 1.25rem;
             color: var(--text-muted);
-            max-width: 650px;
-            margin-left: auto;
-            margin-right: auto;
-            transform: translateZ(10px);
-        }
-        .container {
-            max-width: 1150px;
+            max-width: 700px;
             margin: 0 auto;
-            padding: 4rem 2rem;
+            transform: translateZ(20px);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 5rem 2rem;
             transform-style: preserve-3d;
         }
+
         .section-title {
-            font-size: 2.3rem;
-            margin-bottom: 2.5rem;
+            font-size: 2.5rem;
             text-align: center;
-            font-weight: 700;
+            font-weight: 800;
+            margin-bottom: 3rem;
             letter-spacing: -0.5px;
-            text-shadow: 0 5px 15px rgba(0,0,0,0.5);
+            background: linear-gradient(to right, #fff, #94a3b8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
-        .compliance-badge-box {
-            background: rgba(59, 130, 246, 0.1);
-            border: 1px solid rgba(59, 130, 246, 0.3);
-            border-radius: 16px;
-            padding: 1.8rem;
-            margin-bottom: 3.5rem;
-            text-align: center;
-            color: var(--text-muted);
-            box-shadow: 0 15px 35px rgba(0,0,0,0.4), inset 0 0 15px rgba(59, 130, 246, 0.1);
-            transform: translateZ(15px);
-        }
-        .compliance-badge-box strong {
-            color: var(--text-main);
-        }
+
+        /* 3D Interactive Card Grid */
         .products-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 3rem;
-            margin-bottom: 4rem;
+            margin-bottom: 5rem;
         }
+
         .product-card {
-            background-color: var(--card-bg);
-            backdrop-filter: blur(16px);
+            background: var(--card-bg);
+            backdrop-filter: blur(20px);
             border: 1px solid var(--border-color);
-            border-radius: 20px;
-            padding: 2.8rem;
+            border-radius: 24px;
+            padding: 3rem 2.5rem;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255,255,255,0.1);
-            transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
+            transform-style: preserve-3d;
+            transform: perspective(1000px);
+            transition: transform 0.1s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+        }
+
+        .product-card:hover {
+            border-color: rgba(59, 130, 246, 0.5);
+            box-shadow: 0 40px 80px rgba(0, 0, 0, 0.8), 0 0 40px rgba(59, 130, 246, 0.2);
+        }
+
+        .product-card h3 {
+            font-size: 1.75rem;
+            margin-bottom: 1rem;
+            color: #fff;
             transform: translateZ(20px);
         }
-        .product-card:hover {
-            transform: translateY(-12px) scale(1.02) rotateX(3deg) rotateY(-3deg);
-            border-color: rgba(59, 130, 246, 0.6);
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.7), 0 0 35px rgba(59, 130, 246, 0.25);
-        }
-        .product-card h3 {
-            margin-top: 0;
-            font-size: 1.6rem;
-            color: var(--text-main);
-        }
+
         .product-card p {
             color: var(--text-muted);
-            font-size: 0.98rem;
-            margin-bottom: 1.5rem;
+            font-size: 1rem;
+            margin-bottom: 2rem;
+            transform: translateZ(15px);
         }
+
         .features-list {
             list-style: none;
-            padding: 0;
-            margin: 0 0 1.8rem 0;
-            color: var(--text-muted);
-            font-size: 0.92rem;
+            margin-bottom: 2.5rem;
+            transform: translateZ(15px);
         }
+
         .features-list li {
-            margin-bottom: 0.6rem;
+            color: var(--text-muted);
+            margin-bottom: 0.75rem;
             position: relative;
-            padding-left: 22px;
+            padding-left: 24px;
+            font-size: 0.95rem;
         }
+
         .features-list li::before {
             content: "✓";
             position: absolute;
             left: 0;
-            color: var(--success-color);
+            color: #34d399;
             font-weight: bold;
         }
-        .price {
-            font-size: 2.2rem;
-            font-weight: 800;
-            color: var(--success-color);
-            margin-bottom: 1.5rem;
-            text-shadow: 0 5px 15px rgba(16, 185, 129, 0.3);
+
+        .price-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transform: translateZ(25px);
+            border-top: 1px solid var(--border-color);
+            padding-top: 1.5rem;
         }
+
+        .price {
+            font-size: 2.25rem;
+            font-weight: 800;
+            color: #34d399;
+            text-shadow: 0 0 20px rgba(52, 211, 153, 0.3);
+        }
+
         .btn {
-            display: inline-block;
-            background: linear-gradient(135deg, var(--accent-color), var(--accent-hover));
+            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
             color: white;
-            padding: 0.95rem 2rem;
-            border-radius: 10px;
+            padding: 0.9rem 2rem;
+            border-radius: 12px;
             text-decoration: none;
             font-weight: 600;
-            text-align: center;
-            box-shadow: 0 8px 20px rgba(59, 130, 246, 0.4);
+            box-shadow: 0 10px 25px rgba(59, 130, 246, 0.4);
             transition: all 0.3s ease;
+            display: inline-block;
         }
+
         .btn:hover {
             transform: translateY(-3px) scale(1.05);
-            box-shadow: 0 12px 25px rgba(59, 130, 246, 0.6);
+            box-shadow: 0 15px 35px rgba(59, 130, 246, 0.7);
         }
+
+        /* Workflow 3D Container */
         .workflow-container {
-            background-color: var(--card-bg);
+            background: var(--card-bg);
+            backdrop-filter: blur(20px);
             border: 1px solid var(--border-color);
-            border-radius: 20px;
-            padding: 3.5rem;
-            margin-bottom: 4rem;
-            box-shadow: 0 20px 45px rgba(0,0,0,0.5);
-            transform: translateZ(15px);
+            border-radius: 24px;
+            padding: 4rem 3rem;
+            margin-bottom: 5rem;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
+            transform: translateZ(20px);
         }
+
         .workflow-steps {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-        .step-card {
-            background: rgba(11, 15, 25, 0.75);
-            border: 1px solid var(--border-color);
-            border-radius: 14px;
-            padding: 1.8rem;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-            transition: transform 0.4s ease;
-        }
-        .step-card:hover {
-            transform: translateY(-6px) translateZ(10px);
-            border-color: rgba(59, 130, 246, 0.4);
-            box-shadow: 0 15px 35px rgba(0,0,0,0.5), 0 0 20px rgba(59,130,246,0.15);
-        }
-        .step-card h4 {
-            color: var(--accent-color);
-            margin-top: 0;
-            font-size: 1.15rem;
-        }
-        .step-card p {
-            color: var(--text-muted);
-            font-size: 0.92rem;
-            margin-bottom: 0;
-        }
-        .info-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 2.5rem;
-            margin-bottom: 4rem;
+            margin-top: 3rem;
         }
-        .info-card {
-            background-color: var(--card-bg);
+
+        .step-card {
+            background: rgba(3, 7, 18, 0.6);
             border: 1px solid var(--border-color);
             border-radius: 16px;
-            padding: 2.5rem;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.4);
-            transform: translateZ(15px);
-            transition: transform 0.4s ease;
+            padding: 2.5rem 2rem;
+            transform-style: preserve-3d;
+            transition: transform 0.3s ease, border-color 0.3s ease;
         }
-        .info-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 20px 45px rgba(0,0,0,0.6);
+
+        .step-card:hover {
+            transform: translateY(-8px) translateZ(15px);
+            border-color: rgba(59, 130, 246, 0.4);
         }
-        .info-card h3 {
-            margin-top: 0;
-            color: var(--text-main);
-            font-size: 1.3rem;
-            border-bottom: 1px solid var(--border-color);
-            padding-bottom: 0.75rem;
+
+        .step-card h4 {
+            color: #60a5fa;
+            font-size: 1.25rem;
             margin-bottom: 1rem;
         }
-        .info-card p {
+
+        .step-card p {
             color: var(--text-muted);
             font-size: 0.95rem;
         }
-        .contact-section {
-            background-color: var(--card-bg);
-            backdrop-filter: blur(16px);
+
+        /* Compliance & Info */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 3rem;
+            margin-bottom: 5rem;
+        }
+
+        .info-card {
+            background: var(--card-bg);
             border: 1px solid var(--border-color);
             border-radius: 20px;
-            padding: 3.5rem;
+            padding: 3rem 2.5rem;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        .info-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: #fff;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 1rem;
+        }
+
+        .info-card p {
+            color: var(--text-muted);
+            font-size: 1rem;
+        }
+
+        .contact-section {
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.9), rgba(30, 41, 59, 0.9));
+            border: 1px solid var(--border-color);
+            border-radius: 24px;
+            padding: 4rem;
             text-align: center;
-            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.5);
-            transform: translateZ(20px);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.7);
         }
+
         .contact-section h2 {
-            margin-top: 0;
-            font-size: 2rem;
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
         }
+
         .contact-section p {
             color: var(--text-muted);
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
         }
+
         footer {
             text-align: center;
-            padding: 3rem;
+            padding: 3.5rem;
             color: var(--text-muted);
-            font-size: 0.88rem;
+            font-size: 0.9rem;
             border-top: 1px solid var(--border-color);
-            margin-top: 4rem;
-            background: rgba(11, 15, 25, 0.9);
+            background: rgba(3, 7, 18, 0.95);
+            margin-top: 5rem;
         }
     </style>
 </head>
 <body>
+
+    <div class="bg-glow"></div>
+    <div class="bg-glow-2"></div>
 
     <header>
         <div class="logo-container">
             <span class="logo-text">K</span>
         </div>
         <h1>Kytheris Enterprise</h1>
-        <p>Advanced AI-Generated Workflows, Batch Processing Engines & Python Automation Toolkits</p>
+        <p>Next-Generation AI Workflows, Autonomous Batch Processing Engines & Advanced Python Toolkits</p>
     </header>
 
     <div class="container">
-        <!-- Professional Business Info Badge -->
-        <div class="compliance-badge-box">
-            <p>Official Digital Storefront of <strong>Kytheris Enterprise</strong> — Specializing in Enterprise-grade AI Workflows, Python Automation Scripts, and Developer Toolkits.</p>
+        <!-- Compliance Box -->
+        <div class="info-card" style="margin-bottom: 4rem; text-align: center; background: rgba(59, 130, 246, 0.05); border-color: rgba(59, 130, 246, 0.2);">
+            <p>Official Digital Infrastructure of <strong>Kytheris Enterprise</strong> — Providing secure, high-performance developer software toolkits globally.</p>
         </div>
 
-        <h2 class="section-title">Our Digital Software Products</h2>
+        <h2 class="section-title">Professional Software Solutions</h2>
         <div class="products-grid">
             
             <!-- Product 1 -->
-            <div class="product-card">
+            <div class="product-card" id="card-1">
                 <div>
                     <h3>AI Business Automation Toolkit</h3>
-                    <p>Complete source code and Python scripts designed for batch processing, content scaling, and automated workflow execution.</p>
+                    <p>Complete production-ready source code and modular Python scripts designed for large-scale batch processing and pipeline execution.</p>
                     <ul class="features-list">
-                        <li>Instant Digital Download</li>
-                        <li>Full Python Source Code</li>
-                        <li>Lifetime Access & Updates</li>
-                        <li>Commercial Usage Rights</li>
+                        <li>Instant Digital Repository Access</li>
+                        <li>Full Unobfuscated Python Source</li>
+                        <li>Lifetime Upgrades & Patches</li>
+                        <li>Commercial Enterprise Rights</li>
                     </ul>
                 </div>
-                <div>
+                <div class="price-row">
                     <div class="price">$29.00</div>
-                    <a href="#" class="btn">Get Instant Access</a>
+                    <a href="#" class="btn">Acquire License</a>
                 </div>
             </div>
 
             <!-- Product 2 -->
-            <div class="product-card">
+            <div class="product-card" id="card-2">
                 <div>
                     <h3>Enterprise Engine & Invoicing Suite</h3>
-                    <p>Advanced multi-tier pipeline toolkit featuring automated financial ledger logging, invoice generation, and revenue tracking scripts.</p>
+                    <p>Advanced multi-tier pipeline framework featuring real-time transaction telemetry, ledger synchronization, and automated invoicing.</p>
                     <ul class="features-list">
-                        <li>Multi-tier Pipeline Engine</li>
+                        <li>High-Throughput Pipeline Engine</li>
                         <li>Automated Invoicing Modules</li>
-                        <li>Priority Technical Support</li>
-                        <li>Advanced Documentation & Guide</li>
+                        <li>Dedicated Architecture Support</li>
+                        <li>Advanced Integration Guides</li>
                     </ul>
                 </div>
-                <div>
+                <div class="price-row">
                     <div class="price">$49.00</div>
-                    <a href="#" class="btn">Get Instant Access</a>
+                    <a href="#" class="btn">Acquire License</a>
                 </div>
             </div>
 
         </div>
 
-        <!-- Detailed Project Workflow Section -->
+        <!-- Workflow Section -->
         <div class="workflow-container">
-            <h2 class="section-title" style="margin-bottom: 1rem;">How Our Automation Workflows Function</h2>
-            <p style="text-align: center; color: var(--text-muted); max-width: 700px; margin: 0 auto 2.5rem auto;">Our toolkit architecture is structured into clear modular processing pipelines designed to streamline software deployment and execution.</p>
+            <h2 class="section-title" style="margin-bottom: 1rem;">Core Execution Architecture</h2>
+            <p style="text-align: center; color: var(--text-muted); max-width: 700px; margin: 0 auto;">Our software suites follow strict modular lifecycles to ensure stability and high performance in production environments.</p>
             
             <div class="workflow-steps">
                 <div class="step-card">
-                    <h4>1. Initialization & Input</h4>
-                    <p>Python modular scripts parse system variables, ingest configuration datasets, and validate target parameters securely.</p>
+                    <h4>1. Environment Ingestion</h4>
+                    <p>Python modular scripts parse system architecture, validate dependency mapping, and configure secure runtime parameters.</p>
                 </div>
                 <div class="step-card">
-                    <h4>2. Pipeline Processing</h4>
-                    <p>Automated execution blocks handle multi-threaded batch tasks, transaction logging, and ledger synchronization seamlessly.</p>
+                    <h4>2. Autonomous Processing</h4>
+                    <p>Multi-threaded processing blocks handle asynchronous batch execution, error trapping, and state persistence.</p>
                 </div>
                 <div class="step-card">
-                    <h4>3. Output & Delivery</h4>
-                    <p>Generated logs, reports, and source files are packaged instantly and delivered directly to the authorized developer environment.</p>
+                    <h4>3. Secure Deployment</h4>
+                    <p>Finalized telemetry logs and compiled assets are routed directly to designated enterprise endpoints with zero latency.</p>
                 </div>
             </div>
         </div>
 
-        <!-- Project & Delivery Operations Details -->
-        <h2 class="section-title">Store Operations & Support Policies</h2>
+        <!-- Policies Grid -->
         <div class="info-grid">
             <div class="info-card">
-                <h3>Fulfillment & Delivery</h3>
-                <p>Upon purchase validation, customers receive automated secure download links, verified repository permissions, and comprehensive developer documentation instantly via electronic mail.</p>
+                <h3>Global Delivery Protocols</h3>
+                <p>Upon verified order clearance, our system automatically triggers secure repository provisioning, documentation delivery, and license key generation straight to your registered email.</p>
             </div>
             <div class="info-card">
-                <h3>License & Refund Terms</h3>
-                <p>All toolkits include standard commercial developer rights. Refund claims are processed within 14 days of purchase if reproducible technical defects prevent proper script initialization.</p>
+                <h3>Licensing & Terms</h3>
+                <p>All toolkits are backed by standard commercial development licenses. Technical support and review claims are accommodated within 14 days of acquisition.</p>
             </div>
         </div>
 
         <!-- Contact Section -->
         <div class="contact-section">
-            <h2>Customer Support & Technical Inquiries</h2>
-            <p>For licensing verification, developer documentation, or direct technical assistance, reach out to our engineering group:</p>
-            <p><strong>Email:</strong> support@kytherisenterprise.com</p>
+            <h2>Administrative & Technical Support</h2>
+            <p>For verified license activations, enterprise documentation, or developer inquiries, connect with our core team:</p>
+            <p style="color: #60a5fa; font-weight: 600; margin-top: 1rem;">support@kytherisenterprise.com</p>
         </div>
     </div>
 
     <footer>
-        <p>&copy; 2026 Kytheris Enterprise. All rights reserved. Professional Software Toolkits & Automated Workflows.</p>
+        <p>&copy; 2026 Kytheris Enterprise. All rights reserved. Professional Software Toolkits & Autonomous Infrastructure.</p>
     </footer>
 
+    <!-- Interactive 3D Card Tilt Script -->
+    <script>
+        document.querySelectorAll('.product-card').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                
+                const rotateX = ((y - centerY) / centerY) * -12;
+                const rotateY = ((x - centerX) / centerX) * 12;
+                
+                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
+            });
+        });
+    </script>
 </body>
 </html>
