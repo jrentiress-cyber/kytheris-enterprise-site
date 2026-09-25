@@ -7,8 +7,8 @@
     <style>
         :root {
             --bg-color: #0b0f19;
-            --card-bg: #111827;
-            --border-color: #1f2937;
+            --card-bg: rgba(17, 24, 39, 0.7);
+            --border-color: rgba(255, 255, 255, 0.08);
             --accent-color: #3b82f6;
             --accent-hover: #2563eb;
             --text-main: #f3f4f6;
@@ -22,176 +22,193 @@
             background-color: var(--bg-color);
             color: var(--text-main);
             line-height: 1.6;
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(59, 130, 246, 0.1) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(16, 185, 129, 0.08) 0%, transparent 40%);
         }
         header {
-            background: linear-gradient(135deg, #1e1b4b 0%, #0f172a 100%);
-            padding: 4rem 1rem;
+            background: linear-gradient(135deg, rgba(30, 27, 75, 0.9) 0%, rgba(15, 23, 42, 0.9) 100%);
+            padding: 5rem 1rem;
             text-align: center;
             border-bottom: 1px solid var(--border-color);
+            position: relative;
+            backdrop-filter: blur(10px);
+        }
+        .logo-container {
+            text-align: center;
+            margin-bottom: 20px;
+            perspective: 1000px;
+        }
+        .brand-logo {
+            width: 90px;
+            height: 90px;
+            object-fit: contain;
+            border-radius: 16px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5), 0 0 20px rgba(59, 130, 246, 0.2);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+        .brand-logo:hover {
+            transform: translateY(-5px) scale(1.05) rotateX(5deg) rotateY(5deg);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), 0 0 30px rgba(59, 130, 246, 0.4);
         }
         header h1 {
             margin: 0;
-            font-size: 3rem;
+            font-size: 3.2rem;
             font-weight: 800;
-            background: linear-gradient(to right, #60a5fa, #38bdf8);
+            background: linear-gradient(to right, #60a5fa, #38bdf8, #818cf8);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            text-shadow: 0 10px 30px rgba(59, 130, 246, 0.3);
         }
         header p {
-            color: var(--text-muted);
-            font-size: 1.25rem;
             margin-top: 1rem;
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            max-width: 650px;
+            margin-left: auto;
+            margin-right: auto;
         }
         .container {
             max-width: 1100px;
-            margin: 3rem auto;
-            padding: 0 1.5rem;
+            margin: 0 auto;
+            padding: 5rem 2rem;
         }
-        .card {
-            background-color: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 2.5rem;
-            margin-bottom: 2.5rem;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.5);
-        }
-        h2 {
-            color: #60a5fa;
-            font-size: 1.75rem;
-            margin-top: 0;
-            border-bottom: 2px solid var(--border-color);
-            padding-bottom: 0.75rem;
-        }
-        p, li {
-            color: var(--text-muted);
-            font-size: 1.05rem;
-        }
-        .features-list {
-            list-style: none;
-            padding: 0;
-        }
-        .features-list li {
-            position: relative;
-            padding-left: 1.75rem;
-            margin-bottom: 0.75rem;
-        }
-        .features-list li::before {
-            content: "✔";
-            position: absolute;
-            left: 0;
-            color: var(--success-color);
-            font-weight: bold;
+        .section-title {
+            font-size: 2.2rem;
+            margin-bottom: 3rem;
+            text-align: center;
+            font-weight: 700;
+            letter-spacing: -0.5px;
         }
         .products-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+            margin-bottom: 5rem;
         }
         .product-card {
-            background-color: #0f172a;
+            background-color: var(--card-bg);
+            backdrop-filter: blur(12px);
             border: 1px solid var(--border-color);
-            border-radius: 8px;
-            padding: 2rem;
+            border-radius: 16px;
+            padding: 2.5rem;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            transition: transform 0.2s, border-color 0.2s;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+            transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), border-color 0.3s;
+            transform-style: preserve-3d;
         }
         .product-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--accent-color);
+            transform: translateY(-8px) scale(1.02);
+            border-color: rgba(59, 130, 246, 0.4);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), 0 0 25px rgba(59, 130, 246, 0.15);
         }
         .product-card h3 {
             margin-top: 0;
+            font-size: 1.6rem;
             color: var(--text-main);
-            font-size: 1.4rem;
+        }
+        .product-card p {
+            color: var(--text-muted);
+            font-size: 0.98rem;
+            margin-bottom: 2rem;
         }
         .price {
-            font-size: 1.8rem;
+            font-size: 2rem;
+            font-weight: 800;
             color: var(--success-color);
-            font-weight: bold;
-            margin: 1.5rem 0;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 5px 15px rgba(16, 185, 129, 0.2);
         }
         .btn {
             display: inline-block;
-            background-color: var(--accent-color);
+            background: linear-gradient(135deg, var(--accent-color), var(--accent-hover));
             color: white;
-            padding: 0.75rem 1.5rem;
-            border-radius: 6px;
+            padding: 0.85rem 1.8rem;
+            border-radius: 8px;
             text-decoration: none;
             font-weight: 600;
             text-align: center;
-            transition: background-color 0.2s;
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
+            transition: all 0.3s ease;
         }
         .btn:hover {
-            background-color: var(--accent-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(59, 130, 246, 0.6);
+        }
+        .contact-section {
+            background-color: var(--card-bg);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 3rem;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+        }
+        .contact-section h2 {
+            margin-top: 0;
+            font-size: 2rem;
+        }
+        .contact-section p {
+            color: var(--text-muted);
         }
         footer {
             text-align: center;
-            padding: 2rem;
-            background-color: var(--card-bg);
-            border-top: 1px solid var(--border-color);
+            padding: 2.5rem;
             color: var(--text-muted);
+            font-size: 0.9rem;
+            border-top: 1px solid var(--border-color);
+            margin-top: 5rem;
+            background: rgba(11, 15, 25, 0.8);
         }
     </style>
 </head>
 <body>
 
     <header>
+        <div class="logo-container">
+            <img src="logo.png" alt="Kytheris Enterprise Logo" class="brand-logo">
+        </div>
         <h1>Kytheris Enterprise</h1>
         <p>Advanced AI-Generated Workflows, Batch Processing Engines & Python Automation Toolkits</p>
     </header>
 
     <div class="container">
-        <!-- About Section -->
-        <div class="card">
-            <h2>About Kytheris Enterprise</h2>
-            <p>Kytheris Enterprise specializes in developing enterprise-grade automation solutions, intelligent content generation pipelines, and high-performance Python toolkits. Our software products empower developers and businesses to scale operations seamlessly through automated AI integrations.</p>
-        </div>
-
-        <!-- How It Works / Project Details Section (Sab Samajhne Ke Liye) -->
-        <div class="card">
-            <h2>How Our Ecosystem Works & What We Deliver</h2>
-            <p>Our platform builds and distributes advanced digital assets designed for complete operational automation:</p>
-            <ul class="features-list">
-                <li><strong>Automated Content Engines:</strong> Python scripts that process multi-tier data, format markdown batches, and convert outputs seamlessly.</li>
-                <li><strong>Enterprise Ledger & Invoicing:</strong> Built-in automated invoice generation systems and database transaction tracking.</li>
-                <li><strong>Batch Processing Architecture:</strong> High-speed script execution for managing large volumes of digital data and publishing workflows.</li>
-                <li><strong>Secure Instant Delivery:</strong> Digital toolkits and source code packages delivered directly to customers upon purchase confirmation.</li>
-            </ul>
-        </div>
-
-        <!-- Products & Pricing Section -->
-        <div class="card">
-            <h2>Our Digital Products & Pricing</h2>
-            <div class="products-grid">
-                <div class="product-card">
-                    <div>
-                        <h3>AI Business Automation Toolkit</h3>
-                        <p>Complete source code and Python scripts designed for batch processing, content scaling, and automated workflow execution.</p>
-                    </div>
-                    <div>
-                        <div class="price">$29.00</div>
-                        <a href="#" class="btn">Get Toolkit</a>
-                    </div>
+        <h2 class="section-title">Our Digital Products & Pricing</h2>
+        <div class="products-grid">
+            
+            <!-- Product 1 -->
+            <div class="product-card">
+                <div>
+                    <h3>AI Business Automation Toolkit</h3>
+                    <p>Complete source code and Python scripts designed for batch processing, content scaling, and automated workflow execution.</p>
                 </div>
-
-                <div class="product-card">
-                    <div>
-                        <h3>Enterprise Engine & Invoicing Suite</h3>
-                        <p>Advanced multi-tier pipeline toolkit featuring automated financial ledger logging, invoice generation, and revenue tracking scripts.</p>
-                    </div>
-                    <div>
-                        <div class="price">$49.00</div>
-                        <a href="#" class="btn">Get Enterprise Suite</a>
-                    </div>
+                <div>
+                    <div class="price">$29.00</div>
+                    <a href="#" class="btn">Get Toolkit</a>
                 </div>
             </div>
+
+            <!-- Product 2 -->
+            <div class="product-card">
+                <div>
+                    <h3>Enterprise Engine & Invoicing Suite</h3>
+                    <p>Advanced multi-tier pipeline toolkit featuring automated financial ledger logging, invoice generation, and revenue tracking scripts.</p>
+                </div>
+                <div>
+                    <div class="price">$49.00</div>
+                    <a href="#" class="btn">Get Enterprise Suite</a>
+                </div>
+            </div>
+
         </div>
 
         <!-- Contact Section -->
-        <div class="card">
+        <div class="contact-section">
             <h2>Customer Support & Compliance Contact</h2>
             <p>For verified customer license activations, technical support, or product documentation, reach out to our administration team:</p>
             <p><strong>Email:</strong> support@kytherisenterprise.com</p>
