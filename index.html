@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kytheris Enterprise - AI Workflows & Python Toolkits</title>
+    <style>
+        :root {
+            --bg-color: #0b0f19;
+            --card-bg: #111827;
+            --border-color: #1f2937;
+            --accent-color: #3b82f6;
+            --accent-hover: #2563eb;
+            --text-main: #f3f4f6;
+            --text-muted: #9ca3af;
+            --success-color: #10b981;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+        header {
+            background: linear-gradient(135deg, #1e1b4b 0%, #0f172a 100%);
+            padding: 4rem 1rem;
+            text-align: center;
+            border-bottom: 1px solid var(--border-color);
+        }
+        header h1 {
+            margin: 0;
+            font-size: 3rem;
+            font-weight: 800;
+            background: linear-gradient(to right, #60a5fa, #38bdf8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        header p {
+            color: var(--text-muted);
+            font-size: 1.25rem;
+            margin-top: 1rem;
+        }
+        .container {
+            max-width: 1100px;
+            margin: 3rem auto;
+            padding: 0 1.5rem;
+        }
+        .card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 2.5rem;
+            margin-bottom: 2.5rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.5);
+        }
+        h2 {
+            color: #60a5fa;
+            font-size: 1.75rem;
+            margin-top: 0;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 0.75rem;
+        }
+        p, li {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+        }
+        .features-list {
+            list-style: none;
+            padding: 0;
+        }
+        .features-list li {
+            position: relative;
+            padding-left: 1.75rem;
+            margin-bottom: 0.75rem;
+        }
+        .features-list li::before {
+            content: "✔";
+            position: absolute;
+            left: 0;
+            color: var(--success-color);
+            font-weight: bold;
+        }
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        .product-card {
+            background-color: #0f172a;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+        .product-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-color);
+        }
+        .product-card h3 {
+            margin-top: 0;
+            color: var(--text-main);
+            font-size: 1.4rem;
+        }
+        .price {
+            font-size: 1.8rem;
+            color: var(--success-color);
+            font-weight: bold;
+            margin: 1.5rem 0;
+        }
+        .btn {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            text-align: center;
+            transition: background-color 0.2s;
+        }
+        .btn:hover {
+            background-color: var(--accent-hover);
+        }
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background-color: var(--card-bg);
+            border-top: 1px solid var(--border-color);
+            color: var(--text-muted);
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Kytheris Enterprise</h1>
+        <p>Advanced AI-Generated Workflows, Batch Processing Engines & Python Automation Toolkits</p>
+    </header>
+
+    <div class="container">
+        <!-- About Section -->
+        <div class="card">
+            <h2>About Kytheris Enterprise</h2>
+            <p>Kytheris Enterprise specializes in developing enterprise-grade automation solutions, intelligent content generation pipelines, and high-performance Python toolkits. Our software products empower developers and businesses to scale operations seamlessly through automated AI integrations.</p>
+        </div>
+
+        <!-- How It Works / Project Details Section (Sab Samajhne Ke Liye) -->
+        <div class="card">
+            <h2>How Our Ecosystem Works & What We Deliver</h2>
+            <p>Our platform builds and distributes advanced digital assets designed for complete operational automation:</p>
+            <ul class="features-list">
+                <li><strong>Automated Content Engines:</strong> Python scripts that process multi-tier data, format markdown batches, and convert outputs seamlessly.</li>
+                <li><strong>Enterprise Ledger & Invoicing:</strong> Built-in automated invoice generation systems and database transaction tracking.</li>
+                <li><strong>Batch Processing Architecture:</strong> High-speed script execution for managing large volumes of digital data and publishing workflows.</li>
+                <li><strong>Secure Instant Delivery:</strong> Digital toolkits and source code packages delivered directly to customers upon purchase confirmation.</li>
+            </ul>
+        </div>
+
+        <!-- Products & Pricing Section -->
+        <div class="card">
+            <h2>Our Digital Products & Pricing</h2>
+            <div class="products-grid">
+                <div class="product-card">
+                    <div>
+                        <h3>AI Business Automation Toolkit</h3>
+                        <p>Complete source code and Python scripts designed for batch processing, content scaling, and automated workflow execution.</p>
+                    </div>
+                    <div>
+                        <div class="price">$29.00</div>
+                        <a href="#" class="btn">Get Toolkit</a>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div>
+                        <h3>Enterprise Engine & Invoicing Suite</h3>
+                        <p>Advanced multi-tier pipeline toolkit featuring automated financial ledger logging, invoice generation, and revenue tracking scripts.</p>
+                    </div>
+                    <div>
+                        <div class="price">$49.00</div>
+                        <a href="#" class="btn">Get Enterprise Suite</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contact Section -->
+        <div class="card">
+            <h2>Customer Support & Compliance Contact</h2>
+            <p>For verified customer license activations, technical support, or product documentation, reach out to our administration team:</p>
+            <p><strong>Email:</strong> support@kytherisenterprise.com</p>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Kytheris Enterprise. All rights reserved. Secure Digital Software Solutions.</p>
+    </footer>
+
+</body>
+</html>
